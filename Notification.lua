@@ -1,3 +1,8 @@
+-- Gui to Lua
+-- Version: 3.6
+
+-- Instances:
+
 local Notify = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local Panel = Instance.new("Frame")
@@ -7,13 +12,11 @@ local notificationOn2 = Instance.new("ImageLabel")
 local TextTitle = Instance.new("TextLabel")
 local UICorner_2 = Instance.new("UICorner")
 local TextTitle_2 = Instance.new("TextLabel")
-local DropShadowHolder = Instance.new("Frame")
-local DropShadow = Instance.new("ImageLabel")
 
 -- Properties:
 
 Notify.Name = "Notify"
-Notify.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Notify.Parent = game.Players.LocalPlayer.PlayerGui
 Notify.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Main.Name = "Main"
@@ -69,7 +72,7 @@ TextTitle.TextWrapped = true
 UICorner_2.CornerRadius = UDim.new(0, 7)
 UICorner_2.Parent = Main
 
-TextTitle_2.Name = "TextTitle"
+TextTitle_2.Name = "TextNotif"
 TextTitle_2.Parent = Main
 TextTitle_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextTitle_2.BackgroundTransparency = 1.000
@@ -84,27 +87,6 @@ TextTitle_2.TextScaled = true
 TextTitle_2.TextSize = 14.000
 TextTitle_2.TextWrapped = true
 
-DropShadowHolder.Name = "DropShadowHolder"
-DropShadowHolder.Parent = Main
-DropShadowHolder.BackgroundTransparency = 1.000
-DropShadowHolder.BorderSizePixel = 0
-DropShadowHolder.Size = UDim2.new(1, 0, 1, 0)
-DropShadowHolder.ZIndex = 0
-
-DropShadow.Name = "DropShadow"
-DropShadow.Parent = DropShadowHolder
-DropShadow.AnchorPoint = Vector2.new(0.5, 0.5)
-DropShadow.BackgroundTransparency = 1.000
-DropShadow.BorderSizePixel = 0
-DropShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
-DropShadow.Size = UDim2.new(1, 47, 1, 47)
-DropShadow.ZIndex = 0
-DropShadow.Image = "rbxassetid://6015897843"
-DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-DropShadow.ImageTransparency = 0.500
-DropShadow.ScaleType = Enum.ScaleType.Slice
-DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
-
 Main.Transparency = 1
 Panel.Transparency = 1
 notificationOn.ImageTransparency = 1
@@ -114,47 +96,45 @@ TextTitle_2.TextTransparency = 1
 
 
 function Show()
-	game.TweenService:Create(Main, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-		Transparency = 0
-	}):Play()
-	DropShadowHolder.Visible = true
-	game.TweenService:Create(Panel, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-		Transparency = 0
-	}):Play()
-	game.TweenService:Create(notificationOn, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-		ImageTransparency = 0
-	}):Play()
-	game.TweenService:Create(notificationOn2, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-		ImageTransparency = 0
-	}):Play()
-	game.TweenService:Create(TextTitle, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+game.TweenService:Create(Main, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+	Transparency = 0
+}):Play()
+game.TweenService:Create(Panel, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+	Transparency = 0
+}):Play()
+game.TweenService:Create(notificationOn, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+	ImageTransparency = 0
+}):Play()
+game.TweenService:Create(notificationOn2, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+	ImageTransparency = 0
+}):Play()
+game.TweenService:Create(TextTitle, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 		TextTransparency = 0
-	}):Play()
-	game.TweenService:Create(TextTitle_2, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+}):Play()
+game.TweenService:Create(TextTitle_2, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 		TextTransparency = 0
-	}):Play()
+}):Play()
 end
 
 function Hide()
-	game.TweenService:Create(Main, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-		Transparency = 1
-	}):Play()
-	DropShadowHolder.Visible = false
-	game.TweenService:Create(Panel, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-		Transparency = 1
-	}):Play()
-	game.TweenService:Create(notificationOn, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-		ImageTransparency = 1
-	}):Play()
-	game.TweenService:Create(notificationOn2, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-		ImageTransparency = 1
-	}):Play()
-	game.TweenService:Create(TextTitle, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+game.TweenService:Create(Main, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+	Transparency = 1
+}):Play()
+game.TweenService:Create(Panel, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+	Transparency = 1
+}):Play()
+game.TweenService:Create(notificationOn, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+	ImageTransparency = 1
+}):Play()
+game.TweenService:Create(notificationOn2, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+	ImageTransparency = 1
+}):Play()
+game.TweenService:Create(TextTitle, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 		TextTransparency = 1
-	}):Play()
-	game.TweenService:Create(TextTitle_2, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+}):Play()
+game.TweenService:Create(TextTitle_2, TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 		TextTransparency = 1
-	}):Play()
+}):Play()
 end
 
 
@@ -164,6 +144,12 @@ function Notify(text, title, time)
 	TextTitle.Text = text
 	wait(time)
 	Hide()
-	wait(1)
-	game.Players.LocalPlayer:WaitForChild("PlayerGui").Notify:Destroy()
 end
+
+
+local lib = {}
+function lib.Notify(text, title, time)
+    Notify(text, title, time, true)
+end
+
+return lib
